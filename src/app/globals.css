@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background-color: #191E24;
+
+}
+.montserrat-font {
+    @apply font-montserrat;
+  }
+  
+
+.btn-bg {
+    background-color: #FF3454;
+}
