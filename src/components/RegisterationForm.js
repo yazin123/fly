@@ -1,9 +1,9 @@
-// src/components/RegistrationForm.js
 'use client'
 import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
 
 export default function RegistrationForm({ onSuccess }) {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,12 +29,13 @@ export default function RegistrationForm({ onSuccess }) {
         `/api/registration?email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}`
       );
       const { exists } = await checkResponse.json();
-      
+
       if (exists) {
         setError('This email or phone number has already been registered.');
         return;
       }
 
+      // If user doesn't exist, proceed with registration
       onSuccess(formData);
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
@@ -44,55 +45,75 @@ export default function RegistrationForm({ onSuccess }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full relative">
-        <h2 className="text-2xl font-bold text-center mb-6 text-white">Conference Registration</h2>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+      <div className="bg-gray-800 p-8 rounded-lg max-w-md w-full">
+        <h2 className="text-2xl font-bold text-white mb-6">Register for NextGen Awards</h2>
+
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-lg mb-4">
             {error}
           </div>
         )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="relative">
-            <FaUser className="absolute top-3 left-3 text-gray-400" />
-            <input
-              type="text"
-              required
-              className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              minLength={2}
-            />
+          <div>
+            <label className="block text-gray-300 mb-1">Full Name</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <FaUser className="text-gray-400" />
+              </div>
+              <input
+                type="text"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                placeholder="Enter your full name"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                minLength={2}
+              />
+            </div>
           </div>
-          <div className="relative">
-            <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
-            <input
-              type="email"
-              required
-              className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-            />
+
+          <div>
+            <label className="block text-gray-300 mb-1">Email Address</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <FaEnvelope className="text-gray-400" />
+              </div>
+              <input
+                type="email"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                placeholder="Enter your email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
           </div>
-          <div className="relative">
-            <FaPhone className="absolute top-3 left-3 text-gray-400" />
-            <input
-              type="tel"
-              required
-              className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
-              placeholder="Phone Number (10 digits)"
-              value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              pattern="\d{10}"
-              title="Please enter a valid 10-digit phone number"
-            />
+
+          <div>
+            <label className="block text-gray-300 mb-1">Phone Number</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <FaPhone className="text-gray-400" />
+              </div>
+              <input
+                type="tel"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                placeholder="Enter your phone number"
+                required
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                pattern="\d{10}"
+                title="Please enter a valid 10-digit phone number"
+              />
+            </div>
           </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
+            className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50"
           >
             {loading ? 'Processing...' : 'Register'}
           </button>

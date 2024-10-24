@@ -1,29 +1,61 @@
 'use client'
 import AnimatedBackground from '@/components/AnimatedBackground';
+import CategorySelection from '@/components/CategorySelection';
 import QuizForm from '@/components/Quiz';
 import RegistrationForm from '@/components/RegisterationForm';
-
 import SuccessMessage from '@/components/SuccessMessage';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { FaPlay, FaTwitter, FaFacebook, FaClock, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 
 export default function Home() {
+  const [showRegistration, setShowRegistration] = useState(false);
+  const [step, setStep] = useState('registration');
+  const [userData, setUserData] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-    const [showRegistration, setShowRegistration] = useState(false);
-    const [showQuiz, setShowQuiz] = useState(false);
-    const [showSuccess, setShowSuccess] = useState(false);
-    const [step, setStep] = useState('registration')
-    const [userData, setUserData] = useState(null)
+  const handleRegistrationSuccess = (data) => {
+    setUserData(data);
+    setStep('categorySelection');
+  };
 
-    const handleRegistrationSuccess = (data) => {
-        setUserData(data)
-        setStep('quiz')
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setUserData(prev => ({
+      ...prev,
+      category
+    }));
+    setStep('quiz');
+  };
+
+  const handleQuizComplete = async (quizResults) => {
+    const finalData = {
+      ...userData,
+      category: selectedCategory,
+      quizResults
+    };
+
+    try {
+      // Submit all data to the API
+      const response = await fetch('/api/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(finalData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save registration');
+      }
+
+      setUserData(finalData);
+      setStep('success');
+    } catch (error) {
+      console.error('Failed to save registration:', error);
+      alert('Failed to save your registration. Please try again.');
     }
+  };
 
-    const handleQuizComplete = () => {
-        setStep('success')
-    }
 
 
     const speakers = [
@@ -88,15 +120,21 @@ export default function Home() {
                     {step === 'registration' && (
                         <RegistrationForm onSuccess={handleRegistrationSuccess} />
                     )}
+                    {step === 'categorySelection' && (
+                        <CategorySelection onSelect={handleCategorySelect} />
+                    )}
                     {step === 'quiz' && (
-                        <QuizForm userData={userData} onComplete={handleQuizComplete} />
+                        <QuizForm 
+                            category={selectedCategory}
+                            userData={userData}
+                            onComplete={handleQuizComplete}
+                        />
                     )}
                     {step === 'success' && (
-                        <SuccessMessage />
+                        <SuccessMessage userData={userData} />
                     )}
                 </>
             )}
-
             {/* About Section */}
             <section>
                 <div className="md:flex md:gap-3">

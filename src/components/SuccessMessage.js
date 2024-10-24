@@ -1,16 +1,31 @@
 import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
 
-const SuccessMessage = () => {
+export function SuccessMessage({ userData }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="text-center bg-gray-800 p-8 rounded-lg shadow-lg">
-        <FaCheckCircle className="mx-auto text-6xl text-green-500 mb-4" />
-        <h2 className="text-2xl font-bold text-white">Registration Successful!</h2>
-        <p className="mt-2 text-gray-300">Thank you for completing the quiz.</p>
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+          <div className="bg-gray-800 p-8 rounded-lg max-w-md w-full text-white text-center">
+              <h2 className="text-2xl font-bold mb-4"> <FaCheckCircle/> Registration Complete!</h2>
+              <div className="mb-6">
+                  <p className="text-lg">Thank you for participating, {userData?.name}!</p>
+                  {userData?.quizResults?.qualified ? (
+                      <>
+                          <p className="text-green-400 mt-4">Congratulations! You've qualified for the next round.</p>
+                          <p className="text-sm mt-2">We'll contact you at {userData?.email} with further details.</p>
+                      </>
+                  ) : (
+                      <p className="text-gray-300 mt-4">Thank you for your participation. Keep learning and try again next time!</p>
+                  )}
+              </div>
+              <button 
+                  onClick={() => window.location.reload()}
+                  className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
+              >
+                  Back to Home
+              </button>
+          </div>
       </div>
-    </div>
-  )
+  );
 }
 
 export default SuccessMessage

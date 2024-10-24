@@ -8,10 +8,6 @@ const GOOGLE_PRIVATE_KEY = process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY;
 
 async function getSheet() {
   try {
-    console.log('Sheet ID:', SHEET_ID);
-    console.log('Service Account Email:', GOOGLE_SERVICE_ACCOUNT_EMAIL);
-    console.log('Private Key exists:', !!GOOGLE_PRIVATE_KEY);
-
     const serviceAccountAuth = new JWT({
       email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
       key: GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
@@ -23,17 +19,7 @@ async function getSheet() {
 
     const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccountAuth);
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
-    
-    // Load the header row
-    await sheet.loadHeaderRow();
-    
-    console.log('Sheet Title:', sheet.title);
-    console.log('Sheet Row Count:', sheet.rowCount);
-    console.log('Sheet Column Count:', sheet.columnCount);
-    console.log('Sheet Headers:', sheet.headerValues);
-    
-    return sheet;
+    return doc.sheetsByIndex[0];
   } catch (error) {
     console.error('Error accessing Google Sheet:', error);
     throw new Error(`Failed to access Google Sheet: ${error.message}`);
@@ -49,15 +35,15 @@ export async function GET(request) {
     const sheet = await getSheet();
     const rows = await sheet.getRows();
     
-    const exists = rows.some(row => 
-      row.get('email') === email || row.get('phone') === phone
-    );
+    const exists = rows.some(row => {
+      return (email && row.get('email') === email) || (phone && row.get('phone') === phone);
+    });
     
     return NextResponse.json({ exists });
   } catch (error) {
     console.error('GET Error:', error);
     return NextResponse.json(
-      { error: 'Failed to check registration', details: error.message },
+      { error: 'Failed to check registration' },
       { status: 500 }
     );
   }
@@ -66,46 +52,24 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const data = await request.json();
-    console.log('Received POST data:', data);
-    
     const sheet = await getSheet();
     
-    // Prepare the row data
-    const rowData = {
+    // Add the row with all fields from the registration form and quiz
+    await sheet.addRow({
       name: data.name,
       email: data.email,
       phone: data.phone,
+      category: data.category || '',
+      quizScore: data.quizResults?.score?.toString() || '',
+      qualified: data.quizResults?.qualified ? 'Yes' : 'No',
       timestamp: new Date().toISOString()
-    };
+    });
 
-    // Add answers to the row data
-    if (data.answers) {
-      Object.entries(data.answers).forEach(([id, answer]) => {
-        rowData[`question_${id}`] = answer;
-      });
-    }
-    
-    console.log('Adding row with data:', rowData);
-    
-    try {
-      // Add the row using the direct array approach
-      const result = await sheet.addRow(rowData);
-      console.log('Row added successfully:', result);
-      
-      // Verify the row was added
-      const rows = await sheet.getRows();
-      const lastRow = rows[rows.length - 1];
-      console.log('Last row in sheet:', lastRow.toObject());
-      
-      return NextResponse.json({ success: true });
-    } catch (addRowError) {
-      console.error('Error adding row:', addRowError);
-      throw addRowError;
-    }
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('POST Error:', error);
     return NextResponse.json(
-      { error: 'Failed to submit data', details: error.message },
+      { error: 'Failed to save registration' },
       { status: 500 }
     );
   }
