@@ -60,7 +60,7 @@ export default function CategorySelection({ onSelect }) {
 
       <div className="relative bg-gray-800 rounded-lg w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col">
         <div className="p-2 md:p-6 flex justify-between items-center border-b border-gray-700">
-          <h2 className="text-2xl font-bold text-white">Select Your Category</h2>
+          <h2 className="text-2xl font-bold text-white">Select your spotlight category</h2>
         </div>
 
         <div className="p-2 md:p-6 overflow-y-auto">
