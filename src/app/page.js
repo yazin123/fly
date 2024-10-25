@@ -140,9 +140,9 @@ export default function Home() {
                     <>
                         <div className="flex gap-4 mb-8">
                             {Object.entries(countdown).map(([unit, value]) => (
-                                <div key={unit} className="text-center bg-gray-800 p-4 rounded-lg">
+                                <div key={unit} className="text-center bg-[#2D3640] md:p-5 p-3 rounded-lg">
                                     <div className="text-2xl font-bold">{String(value).padStart(2, '0')}</div>
-                                    <div className="text-sm text-gray-400 capitalize">{unit}</div>
+                                    <div className="text-sm text-gray-400 capitalize md:w-20">{unit}</div>
                                 </div>
                             ))}
                         </div>
@@ -153,7 +153,7 @@ export default function Home() {
                             Register Now
                         </button>
                         <button className="w-full py-3 rounded-md font-semibold mt-3">
-                            Know more
+                            Learn more
                         </button>
                     </>
                 );
@@ -166,8 +166,8 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="min-h-screen py-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div>
-                    <h2 className="text-4xl font-bold mb-4 md:mt-52 mt-20">{eventData.title}</h2>
+                <div className='md:pt-3'>
+                    <h2 className="text-4xl font-bold mb-4  mt-20">{eventData.title}</h2>
                     <p className="text-xl mb-4 text-gray-300">{eventData.subtitle}</p>
                     <div className="flex items-center gap-2 mb-2">
                         <span className="text-red-500">📅</span>
@@ -203,37 +203,37 @@ export default function Home() {
             )}
 
             {/* About Section */}
-            <section className="py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className='flex justify-center'>
-                        <Image src='/Image.png' width={500} height={500} className='md:h-4/6 object-cover' />
-                    </div>
-                    <div className='mt-5'>
-                        <h3 className="text-3xl font-bold mb-6">About The Event</h3>
-                        <p className="text-gray-300 mb-8">{eventData.description}</p>
-                    </div>
-                </div>
 
-                <div className="">
-                    <div>
-                        <h4 className="text-2xl font-bold mb-4">Why Participate?</h4>
-                        <ul className="space-y-4">
-                            {eventData.whyParticipate.map((item, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <span className="text-red-500 mt-1">•</span>
-                                    <span className="text-gray-300">{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className='flex justify-center'>
+                    <Image src='/Image.png' width={500} height={500} className='md:h-4/6 object-cover' />
                 </div>
+                <div className='mt-5'>
+                    <h3 className="text-3xl font-bold mb-6">About The Event</h3>
+                    <p className="text-gray-300 text-justify">{eventData.description}</p>
+                </div>
+            </div>
 
-            </section>
-            <div className='mt-52'>
+            <div className=" mt-20 md:-mt-20">
+                <div>
+                    <h4 className="text-2xl font-bold mb-4">Why Participate?</h4>
+                    <ul className="space-y-4">
+                        {eventData.whyParticipate.map((item, index) => (
+                            <li key={index} className="flex items-start gap-3">
+                                <span className="text-red-500 mt-1">•</span>
+                                <span className="text-gray-300 text-justify">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+
+
+            <div className='mt-20'>
                 <h4 className="text-2xl font-bold mb-4 text-center">Event Highlights</h4>
                 <ul className="flex justify-center flex-wrap gap-4">
                     {eventData.highlights.map((item, index) => (
-                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-gray-800 p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
+                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-[#2D3640] p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
 
                             <span className="text-gray-300">{item}</span>
                         </li>
