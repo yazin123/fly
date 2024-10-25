@@ -4,10 +4,10 @@ import { FaPlay, FaTwitter, FaFacebook, FaClock, FaMapMarkerAlt, FaUsers } from 
 const Footer = () => {
     const [email, setEmail] = useState('');
     return (
-        <>
+        <div className='bg-[#191E24] mt-32'>
 
             {/* Newsletter Section */}
-            <section className=" py-16 text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className=" py-16 text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="text-center mb-8">
                     <h3 className="text-xl font-bold mb-2">Join our newsletter to get latest updates about conference.</h3>
                 </div>
@@ -34,7 +34,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-        </>
+        </div>
 
     )
 }

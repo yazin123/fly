@@ -10,27 +10,10 @@ const EventsPage = () => {
     {
       id: 1,
       title: 'FLY Inaugurational Conference 2024',
-      date: '2024-10-28T10:30:00',
+      date: '2024-12-21T09:00:00',
       image: '/Image.png'
     },
-    {
-      id: 2,
-      title: 'Tech Summit 2024',
-      date: '2024-11-15T09:00:00',
-      image: '/Image2.png'
-    },
-    {
-      id: 3,
-      title: 'Digital Innovation Workshop',
-      date: '2024-12-05T14:00:00',
-      image: '/Image3.png'
-    },
-    {
-      id: 4,
-      title: 'AI & ML Conference',
-      date: '2024-11-01T11:00:00',
-      image: '/Image4.png'
-    }
+   
   ];
 
   const [events, setEvents] = useState([]);
@@ -75,7 +58,7 @@ const EventsPage = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleString('en-US', {
+    return date.toLocaleString('en-UK', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -93,11 +76,11 @@ const EventsPage = () => {
         Explore and Join Upcoming Events
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
         {events.map((event, index) => (
           <div
             key={event.id}
-            className="relative rounded-sm overflow-hidden"
+            className="w-1/2"
             style={{
               opacity: 0,
               animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`

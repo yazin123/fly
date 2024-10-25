@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
@@ -24,7 +25,7 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full top-0 left-0 z-50 p-6 transition-all duration-300 ${isScrolled ? 'bg-[#191E24]' : 'bg-transparent'}`}>
             <div className="flex justify-between items-center">
-                <h1 className="text-white text-2xl font-bold">FLY</h1>
+               <Link href='/'> <h1 className="text-white text-2xl font-bold">FLY</h1></Link>
                 <button className="px-4 py-2 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300">
                     Contact Us
                 </button>
