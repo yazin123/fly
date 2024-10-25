@@ -7,7 +7,7 @@ const Footer = () => {
         <div className='bg-[#191E24] mt-32'>
 
             {/* Newsletter Section */}
-            <section className=" py-16 text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+            {/* <section className=" py-16 text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="text-center mb-8">
                     <h3 className="text-xl font-bold mb-2">Join our newsletter to get latest updates about conference.</h3>
                 </div>
@@ -22,7 +22,7 @@ const Footer = () => {
                     />
                     <button className="px-6 py-2 bg-red-500 rounded-md">Subscribe</button>
                 </div>
-            </section>
+            </section> */}
             <footer className=" py-8 border-t border-gray-800 ">
                 <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div>

@@ -1,159 +1,261 @@
 'use client'
 import AnimatedBackground from '@/components/AnimatedBackground';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { BsCalendar2Event } from 'react-icons/bs';
+import CategorySelection from '@/components/CategorySelection';
+import QuizForm from '@/components/Quiz';
+import RegistrationForm from '@/components/RegisterationForm';
+import SuccessMessage from '@/components/SuccessMessage';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 
-const EventsPage = () => {
-  // Sample events data - this would come from your backend
-  const eventsData = [
-    {
-      id: 1,
-      title: 'FLY Inaugurational Conference 2024',
-      date: '2024-12-21T09:00:00',
-      image: '/Image.png'
-    },
-   
-  ];
-
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    // Initialize events with countdown data
-    const initializedEvents = eventsData.map(event => ({
-      ...event,
-      timeLeft: calculateTimeLeft(new Date(event.date))
-    }));
-    setEvents(initializedEvents);
-
-    // Update all countdowns every second
-    const timer = setInterval(() => {
-      setEvents(prevEvents =>
-        prevEvents.map(event => ({
-          ...event,
-          timeLeft: calculateTimeLeft(new Date(event.date))
-        }))
-      );
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const calculateTimeLeft = (eventDate) => {
-    const now = new Date();
-    const difference = eventDate - now;
-
-    // Return all zeros if the event has passed
-    if (difference < 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    }
-
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60)
-    };
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleString('en-UK', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
+export default function Home() {
+    const [showRegistration, setShowRegistration] = useState(false);
+    const [step, setStep] = useState('registration');
+    const [userData, setUserData] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [countdown, setCountdown] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
     });
-  };
+    const [eventStatus, setEventStatus] = useState('upcoming'); // 'upcoming', 'ongoing', 'ended'
 
-  return (
-    <div className="min-h-screen p-6 pt-52">
-      <AnimatedBackground />
+    const eventData = {
+        id: '1',
+        title: 'NextGen Entrepreneur Awards 2024',
+        subtitle: 'Empowering Tomorrows Business Leaders Today',
+        date: '21st December 2024',
+        startTime: '09:00',
+        endTime: '17:00',
+        venue: 'Gokulam Convention Center, Kochi',
+        description: `The FLY NextGen Awards 2024 is a premier platform dedicated to recognizing, inspiring and empowering young entrepreneurs to become the business leaders of tomorrow. Hosted by Forward Looking Youth (FLY) International, this event celebrates the vibrant entrepreneurial spirit of youth, providing a unique oppurtunity for emerging talents to showcase their skills and gain invaluable mentorship from industrial experts. With a commitment to equipping young minds with the essential knowledge, tools and networks needed for success, FLY gathers over 200+ young entrepreneurs from diverse industries for a dynamic day filled with competitions, training sessions, expert talks and a prestigious award ceremony`,
+        whyParticipate: [
+            'Tackle engaging activities across various categories including Strategy, Financial Management, Marketing, Leadership, Technology, and Human Resource Management',
+            'Benefit from case studies and interactive sessions led by industry experts, equipping you with the knowledge to navigate complex business scenarios effectively.',
+            'Present your skills before leaders and consultants who will offer guidance, support and valuable insights to help you grow',
+            'Interact with successful business leaders and consultants who will offer guidance, support and valuable insights to help you grow',
+            'Connect with like minded young entrepreneurs, fostering relationships that can shape your future business endeavours.',
+            'Be recognized for your talents in front of a prestigious audience of industry leaders and peers, enhancing your credibility and visibility in the entrepreneurial community.'
+        ],
+        highlights: [
+            'Compete in real world business challenges evaluated by industry experts.',
+            'Attend interactive sessions led by successful business leaders to develop essential skills in finance, marketing, leadership and technology.',
+            'Listen to successful entrepreneurs share their experiences and insights',
+            'Meet and connect with over 200 young entrepreneurs and industry leaders to build valuable relationships',
+            'Participate in activities like case studies and simulations to gain real world experiences'
+        ]
+    };
 
-      <h2 className="text-white text-4xl font-bold text-center mb-12">
-        Explore and Join Upcoming Events
-      </h2>
+    useEffect(() => {
+        const calculateCountdown = () => {
+            const eventDate = new Date('2024-12-21T09:00:00');
+            const eventEndDate = new Date('2024-12-21T17:00:00');
+            const now = new Date();
 
-      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
-        {events.map((event, index) => (
-          <div
-            key={event.id}
-            className="w-1/2"
-            style={{
-              opacity: 0,
-              animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`
-            }}
-          >
-            <div className="backdrop-blur-3xl bg-white/5 md:pt-10 md:pl-10  border border-white/20 flex">
-              <div className="md:w-2/3  p-3 pb-5 md:pb-10">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <p className="text-white/70 text-sm mb-2 flex items-center gap-2">
-                      <BsCalendar2Event />
-                      {formatDate(event.date)}
-                    </p>
-                    <h3 className="text-white text-xl font-semibold mb-4">
-                      {event.title}
-                    </h3>
-                  </div>
-                </div>
+            // Check event status
+            if (now >= eventDate && now < eventEndDate) {
+                setEventStatus('ongoing');
+            } else if (now >= eventEndDate) {
+                setEventStatus('ended');
+            } else {
+                setEventStatus('upcoming');
+            }
 
-                <div className="grid grid-cols-4 gap-2 mb-11">
-                  <div className="text-center">
-                    <p className="text-white text-xl font-bold">
-                      {event.timeLeft.days}
-                    </p>
-                    <p className="text-white/70 text-xs">Days</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-white text-xl font-bold">
-                      {event.timeLeft.hours}
-                    </p>
-                    <p className="text-white/70 text-xs">Hours</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-white text-xl font-bold">
-                      {event.timeLeft.minutes}
-                    </p>
-                    <p className="text-white/70 text-xs">Mins</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-white text-xl font-bold">
-                      {event.timeLeft.seconds}
-                    </p>
-                    <p className="text-white/70 text-xs">Secs</p>
-                  </div>
-                </div>
+            if (eventStatus === 'upcoming') {
+                const difference = eventDate - now;
 
-                <Link
-                  className="p-2 btn-bg text-white rounded-sm  min-w-full
-                           hover:bg-red-400 transition-colors duration-300"
-                  href={`/${event.id}`}
-                >
-                  Know more
-                </Link>
-              </div>
+                setCountdown({
+                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                    minutes: Math.floor((difference / (1000 * 60)) % 60),
+                    seconds: Math.floor((difference / 1000) % 60)
+                });
+            }
+        };
 
-              <img
-                src={event.image}
-                alt={event.title}
-                className="md:w-1/3 h-auto object-cover hidden md:block"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+        const timer = setInterval(calculateCountdown, 1000);
+        return () => clearInterval(timer);
+    }, [eventStatus]);
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+    const handleRegistrationSuccess = (data) => {
+        setUserData(data);
+        setStep('categorySelection');
+    };
+
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category);
+        setUserData(prev => ({
+            ...prev,
+            category
+        }));
+        setStep('quiz');
+    };
+
+    const handleQuizComplete = async (quizResults) => {
+        const finalData = {
+            ...userData,
+            category: selectedCategory,
+            quizResults
+        };
+
+        try {
+            const response = await fetch('/api/registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(finalData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save registration');
+            }
+
+            setUserData(finalData);
+            setStep('success');
+        } catch (error) {
+            console.error('Failed to save registration:', error);
+            alert('Failed to save your registration. Please try again.');
         }
-      `}</style>
-    </div>
-  );
-};
+    };
 
-export default EventsPage;
+    const renderEventStatus = () => {
+        switch (eventStatus) {
+            case 'ongoing':
+                return (
+                    <div className="bg-green-500 px-6 py-3 rounded-md text-center">
+                        <h3 className="text-xl font-bold">Event is Live!</h3>
+                        <p>The NextGen Entrepreneur Awards 2024 is currently in progress</p>
+                    </div>
+                );
+            case 'ended':
+                return (
+                    <div className="bg-gray-700 px-6 py-3 rounded-md text-center">
+                        <h3 className="text-xl font-bold">Event has Ended</h3>
+                        <p>Thank you for your interest. Stay tuned for future events!</p>
+                    </div>
+                );
+            default:
+                return (
+                    <>
+                        <div className="flex gap-4 mb-8">
+                            {Object.entries(countdown).map(([unit, value]) => (
+                                <div key={unit} className="text-center bg-gray-800 p-4 rounded-lg">
+                                    <div className="text-2xl font-bold">{String(value).padStart(2, '0')}</div>
+                                    <div className="text-sm text-gray-400 capitalize">{unit}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <button
+                            onClick={() => setShowRegistration(true)}
+                            className="w-full py-3 bg-red-500 rounded-md font-semibold"
+                        >
+                            Register Now
+                        </button>
+                        <button className="w-full py-3 rounded-md font-semibold mt-3">
+                            Know more
+                        </button>
+                    </>
+                );
+        }
+    };
+
+    return (
+        <div className="min-h-screen text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedBackground />
+
+            {/* Hero Section */}
+            <section className="min-h-screen py-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h2 className="text-4xl font-bold mb-4 md:mt-52 mt-20">{eventData.title}</h2>
+                    <p className="text-xl mb-4 text-gray-300">{eventData.subtitle}</p>
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="text-red-500">📅</span>
+                        <span>{eventData.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="text-red-500">🕒</span>
+                        <span>{eventData.startTime} - {eventData.endTime}</span>
+                    </div>
+                    <div className="flex items-center gap-2 mb-8">
+                        <span className="text-red-500">📍</span>
+                        <span>{eventData.venue}</span>
+                    </div>
+
+                    {renderEventStatus()}
+                </div>
+
+                <div className="justify-center items-center hidden md:flex">
+                    <div className="border border-red-400 h-2/3 relative flex justify-center items-center">
+                        <Image width={1000} height={1000} src="/Image.png" alt="Conference" className="h-full object-cover relative top-6 left-6" />
+                    </div>
+                </div>
+            </section>
+
+            {/* Registration Flow */}
+            {showRegistration && eventStatus === 'upcoming' && (
+                <>
+                    {step === 'registration' && <> <RegistrationForm onSuccess={handleRegistrationSuccess} />   </>}
+                    {step === 'categorySelection' && <CategorySelection onSelect={handleCategorySelect} />}
+                    {step === 'quiz' && <QuizForm category={selectedCategory} userData={userData} onComplete={handleQuizComplete} />}
+                    {step === 'success' && <SuccessMessage userData={userData} />}
+                </>
+            )}
+
+            {/* About Section */}
+            <section className="py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className='flex justify-center'>
+                        <Image src='/Image.png' width={500} height={500} className='md:h-4/6 object-cover' />
+                    </div>
+                    <div className='mt-5'>
+                        <h3 className="text-3xl font-bold mb-6">About The Event</h3>
+                        <p className="text-gray-300 mb-8">{eventData.description}</p>
+                    </div>
+                </div>
+
+                <div className="">
+                    <div>
+                        <h4 className="text-2xl font-bold mb-4">Why Participate?</h4>
+                        <ul className="space-y-4">
+                            {eventData.whyParticipate.map((item, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                    <span className="text-red-500 mt-1">•</span>
+                                    <span className="text-gray-300">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+            <div className='mt-52'>
+                <h4 className="text-2xl font-bold mb-4 text-center">Event Highlights</h4>
+                <ul className="flex justify-center flex-wrap gap-4">
+                    {eventData.highlights.map((item, index) => (
+                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-gray-800 p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
+
+                            <span className="text-gray-300">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Call to Action */}
+            {eventStatus === 'upcoming' && (
+                <section className="py-16">
+                    <div className="text-center">
+                        <h3 className="text-3xl font-bold mb-4">Ready to Join Us?</h3>
+                        <p className="text-gray-300 mb-8">Don't miss this opportunity to be part of the NextGen Entrepreneur Awards 2024</p>
+                        <button
+                            onClick={() => setShowRegistration(true)}
+                            className="px-8 py-3 bg-red-500 rounded-md font-semibold"
+                        >
+                            Register Now
+                        </button>
+                    </div>
+                </section>
+            )}
+        </div>
+    );
+}
