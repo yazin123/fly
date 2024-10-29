@@ -63,7 +63,7 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="min-h-screen px-4 sm:px-6 lg:px-8 mt-16">
+        <div className="min-h-screen px-4 sm:px-6 lg:px-8 mt-32 mb-32">
             <AnimatedBackground />
 
             <div className="max-w-7xl mx-auto">
