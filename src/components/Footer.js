@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  FaTwitter, 
   FaFacebook, 
   FaInstagram, 
   FaLinkedin,
@@ -13,7 +12,6 @@ import {
 
 const Footer = () => {
   const socialLinks = [
-
     { icon: FaFacebook, href: '#', label: 'Facebook' },
     { icon: FaInstagram, href: '#', label: 'Instagram' },
     { icon: FaLinkedin, href: '#', label: 'LinkedIn' }
@@ -22,17 +20,20 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: FaMapMarkerAlt,
-      content: 'XXI/152, Cochin University Post, Kalamassery, Ernakulam, 682022',
+      content: [
+        'XXI/152, Cochin University Post, Kalamassery, Kochi - 682022',
+        '17 Salt Hill Avenue, Post code -SL1 3XP Slough, United Kingdom'
+      ],
       type: 'address'
     },
     {
       icon: FaPhone,
-      content: ['+91 884 808 5572', '+91 812 983 9102'],
+      content: ['+91 884 808 5572', '+91 812 983 9102', '+44 7407702612 (UK)'],
       type: 'phone'
     },
     {
       icon: FaEnvelope,
-      content: 'info@flynetwork.in',
+      content: ['info@flynetwork.in'],
       type: 'email'
     }
   ];
@@ -81,17 +82,14 @@ const Footer = () => {
                 <div key={index} className="flex items-start gap-4 group">
                   <info.icon className="text-purple-300 mt-1 flex-shrink-0 w-5 h-5 group-hover:text-white transition-colors duration-300" />
                   <div className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">
-                    {Array.isArray(info.content) ? (
-                      info.content.map((item, idx) => (
-                        <p key={idx} className="hover:text-purple-300 transition-colors duration-300">
-                          {item}
-                        </p>
-                      ))
-                    ) : (
-                      <p className="hover:text-purple-300 transition-colors duration-300">
-                        {info.content}
+                    {info.content.map((item, idx) => (
+                      <p 
+                        key={idx} 
+                        className="hover:text-purple-300 transition-colors duration-300 mb-2"
+                      >
+                        {item}
                       </p>
-                    )}
+                    ))}
                   </div>
                 </div>
               ))}

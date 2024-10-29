@@ -13,8 +13,30 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Fly",
-  description: "Build for dev",
+  title: 'FLY - Forward Learning Youth',
+  description: "Join FLY NextGen Awards 2024, celebrating young entrepreneurial talent with competitions, expert mentorship, and networking. 200+ emerging business leaders unite for this premier youth recognition platform",
+  keywords: 'FLY NextGen Awards 2024, Young entrepreneurs awards, Youth entrepreneurship, Business leadership awards, NextGen business competition, Entrepreneurship mentorship, Business talent recognition,Youth entrepreneurship competition 2024',
+  openGraph: {
+    title: 'FLY - Forward Learning Youth',
+    description: 'Join FLY NextGen Awards 2024, celebrating young entrepreneurial talent with competitions, expert mentorship, and networking. 200+ emerging business leaders unite for this premier youth recognition platform',
+    url: 'https://register.flynetwork.in/',
+    images: [
+      {
+        url: 'https://register.flynetwork.in/flymeta.jpg',
+        alt: 'FLY - Forward Learning Youth',
+      },
+    ],
+    siteName: 'FLY - Forward Learning Youth',
+  },
+  icons: {
+    icon: '/flymeta.jpg',
+    shortcut: '/flymeta.jpg',
+    apple: '/img/yazin.jpg',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/flymeta.jpg',
+    },
+  },
 };
 
 export default function RootLayout({ children }) {

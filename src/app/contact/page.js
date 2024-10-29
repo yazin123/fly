@@ -18,17 +18,20 @@ const ContactPage = () => {
         {
             icon: FaMapMarkerAlt,
             title: 'Visit Us',
-            content: 'XXI/152, Cochin University Post, Kalamassery, Ernakulam, 682022'
+            content: [
+                'XXI/152, Cochin University Post, Kalamassery, Kochi - 682022',
+                '17 Salt Hill Avenue, Post code -SL1 3XP Slough, United Kingdom'
+            ]
         },
         {
             icon: FaPhone,
             title: 'Call Us',
-            content: ['+91 8848085572', '+91 8129839102']
+            content: ['+91 8848085572', '+91 8129839102', '+44 7407702612 (UK)']
         },
         {
             icon: FaEnvelope,
             title: 'Email Us',
-            content: 'info@flynetwork.in'
+            content: ['info@flynetwork.in']
         }
     ];
 
@@ -38,8 +41,6 @@ const ContactPage = () => {
         setSubmitStatus({ type: '', message: '' });
 
         try {
-
-
             // Then, save to Google Sheet
             const formData = new FormData(formRef.current);
             const response = await fetch('/api/contact', {
@@ -102,24 +103,22 @@ const ContactPage = () => {
                             {contactInfo.map((info, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-start p-6  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-purple-800"
+                                    className="flex items-start p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-purple-800"
                                 >
-                                    <div className=" p-3 rounded-lg">
+                                    <div className="p-3 rounded-lg">
                                         <info.icon className="w-6 h-6 text-white" />
                                     </div>
                                     <div className="ml-6">
                                         <h3 className="text-lg font-medium text-white mb-2">
                                             {info.title}
                                         </h3>
-                                        {Array.isArray(info.content) ? (
-                                            info.content.map((item, idx) => (
-                                                <p key={idx} className="text-white">
+                                        <div className="space-y-2">
+                                            {info.content.map((item, idx) => (
+                                                <p key={idx} className="text-gray-200">
                                                     {item}
                                                 </p>
-                                            ))
-                                        ) : (
-                                            <p className="text-gray-200">{info.content}</p>
-                                        )}
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -206,10 +205,10 @@ const ContactPage = () => {
                                 type="submit"
                                 disabled={isSubmitting}
                                 className={`w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-medium
-                  ${!isSubmitting && 'hover:bg-purple-700'} 
-                  transition-colors duration-300 
-                  disabled:opacity-70 disabled:cursor-not-allowed
-                  flex items-center justify-center`}
+                                    ${!isSubmitting && 'hover:bg-purple-700'} 
+                                    transition-colors duration-300 
+                                    disabled:opacity-70 disabled:cursor-not-allowed
+                                    flex items-center justify-center`}
                             >
                                 {isSubmitting ? (
                                     <>
