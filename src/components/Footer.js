@@ -46,10 +46,10 @@ const Footer = () => {
             <Link href="/" className="inline-block">
               <Image 
                 src="/logo2.png" 
-                width={200} 
-                height={80} 
+                width={1000} 
+                height={100} 
                 alt="Fly Network Logo"
-                className="w-auto h-auto transform hover:scale-105 transition-transform duration-300"
+                className="w-auto h-32 object-cover transform hover:scale-105 transition-transform duration-300"
               />
             </Link>
             
