@@ -38,21 +38,35 @@ const ContactPage = () => {
         setSubmitStatus({ type: '', message: '' });
 
         try {
-            const result = await emailjs.sendForm(
-                'YOUR_SERVICE_ID',  // Replace with your EmailJS service ID
-                'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-                formRef.current,
-                'YOUR_PUBLIC_KEY'   // Replace with your EmailJS public key
-            );
 
-            if (result.text === 'OK') {
+
+            // Then, save to Google Sheet
+            const formData = new FormData(formRef.current);
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_name: formData.get('user_name'),
+                    user_email: formData.get('user_email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                }),
+            });
+
+            if (response.ok) {
                 setSubmitStatus({
                     type: 'success',
                     message: 'Thank you for your message. We will get back to you soon!'
                 });
                 formRef.current.reset();
+            } else {
+                throw new Error('Failed to save submission');
             }
+
         } catch (error) {
+            console.error('Submission error:', error);
             setSubmitStatus({
                 type: 'error',
                 message: 'Something went wrong. Please try again later.'
@@ -180,8 +194,8 @@ const ContactPage = () => {
                             {submitStatus.message && (
                                 <div
                                     className={`p-4 rounded-lg ${submitStatus.type === 'success'
-                                            ? 'bg-green-50 text-green-800'
-                                            : 'bg-red-50 text-red-800'
+                                        ? 'bg-green-50 text-green-800'
+                                        : 'bg-red-50 text-red-800'
                                         }`}
                                 >
                                     {submitStatus.message}
