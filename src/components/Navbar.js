@@ -26,10 +26,11 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full top-0 left-0 z-50 p-6 transition-all duration-300 ${isScrolled ? 'bg-[#191E24]' : 'bg-transparent'}`}>
             <div className="flex justify-between items-center">
-               <Link href='/'><Image src='/logo1.png' width={500} height={500} className=' w-32 h-auto' /></Link>
-                <button className="px-4 py-2 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300">
+               <Link href='/' className='hidden md:block'><Image src='/logo1.png' width={500} height={500} className=' w-32 h-auto' /></Link>
+               <Link href='/' className='md:hidden'><Image src='/logo2.png' width={500} height={500} className=' w-32 h-auto' /></Link>
+                <Link href='/contact' className="px-4 py-2 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300">
                     Contact Us
-                </button>
+                </Link>
             </div>
         </nav>
     );
