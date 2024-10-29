@@ -64,7 +64,7 @@ export default function RegistrationForm({ onSuccess }) {
               </div>
               <input
                 type="text"
-                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-purple-700"
                 placeholder="Enter your full name"
                 required
                 value={formData.name}
@@ -82,7 +82,7 @@ export default function RegistrationForm({ onSuccess }) {
               </div>
               <input
                 type="email"
-                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-purple-700"
                 placeholder="Enter your email"
                 required
                 value={formData.email}
@@ -99,7 +99,7 @@ export default function RegistrationForm({ onSuccess }) {
               </div>
               <input
                 type="tel"
-                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-red-500"
+                className="w-full pl-10 pr-3 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:border-purple-700"
                 placeholder="Enter your phone number"
                 required
                 value={formData.phone}
@@ -113,7 +113,7 @@ export default function RegistrationForm({ onSuccess }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50"
+            className="w-full bg-purple-800 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
           >
             {loading ? 'Processing...' : 'Register'}
           </button>

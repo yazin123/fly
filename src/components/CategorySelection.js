@@ -75,12 +75,12 @@ export default function CategorySelection({ onSelect }) {
                   onClick={() => handleCategorySelect(category)}
                   className={`group md:p-6 p-2 rounded-lg text-white transition-all duration-200 transform hover:scale-[1.02] 
                     flex md:flex-col items-center text-start md:text-center relative
-                    ${isSelected ? 'bg-red-500' : 'bg-gray-700 hover:bg-gray-600'}`}
+                    ${isSelected ? 'bg-purple-800' : 'bg-gray-700 hover:bg-gray-600'}`}
                 >
                   {isSelected && (
                     <CheckCircle className="absolute top-2 right-2 w-6 h-6" />
                   )}
-                  <Icon className={`mr-3 min-w-8 text-3xl mb-3 ${isSelected ? 'text-white' : 'text-red-500'} group-hover:scale-110 transition-transform`} />
+                  <Icon className={`mr-3 min-w-8 text-3xl mb-3 ${isSelected ? 'text-white' : 'text-purple-600'} group-hover:scale-110 transition-transform`} />
                   <div>
                   <h3 className="font-semibold mb-1 md:mb-2">{category.title}</h3>
                   <p className="text-sm text-gray-300">{category.description}</p>
@@ -95,7 +95,7 @@ export default function CategorySelection({ onSelect }) {
           <div className="p-6 border-t border-gray-700">
             <button
               onClick={handleConfirm}
-              className="w-full py-4 bg-red-500 text-white rounded-lg hover:bg-red-600 
+              className="w-full py-4 btn-bg text-white rounded-lg hover:bg-purple-800 
                        transition-colors font-semibold text-lg flex items-center justify-center gap-2"
             >
               Let's Go!

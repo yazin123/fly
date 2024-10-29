@@ -6,6 +6,7 @@ import RegistrationForm from '@/components/RegisterationForm';
 import SuccessMessage from '@/components/SuccessMessage';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import { FaCalendar, FaCalendarAlt, FaClock, FaMapMarkedAlt } from 'react-icons/fa';
 
 export default function Home() {
     const [showRegistration, setShowRegistration] = useState(false);
@@ -148,7 +149,7 @@ export default function Home() {
                         </div>
                         <button
                             onClick={() => setShowRegistration(true)}
-                            className="w-full py-3 bg-red-500 rounded-md font-semibold"
+                            className="w-full py-3 bg-purple-800 hover:bg-purple-500 rounded-md font-semibold"
                         >
                             Register Now
                         </button>
@@ -170,15 +171,15 @@ export default function Home() {
                     <h2 className="text-4xl font-bold mb-4  mt-20">{eventData.title}</h2>
                     <p className="text-xl mb-4 text-gray-300">{eventData.subtitle}</p>
                     <div className="flex items-center gap-2 mb-2">
-                        <span className="text-red-500">📅</span>
+                        <FaCalendarAlt className='text-purple-400' />
                         <span>{eventData.date}</span>
                     </div>
                     <div className="flex items-center gap-2 mb-2">
-                        <span className="text-red-500">🕒</span>
+                        <FaClock className='text-purple-400' />
                         <span>{eventData.startTime} - {eventData.endTime}</span>
                     </div>
                     <div className="flex items-center gap-2 mb-8">
-                        <span className="text-red-500">📍</span>
+                        <FaMapMarkedAlt className='text-purple-400' />
                         <span>{eventData.venue}</span>
                     </div>
 
@@ -186,8 +187,8 @@ export default function Home() {
                 </div>
 
                 <div className="justify-center items-center hidden md:flex">
-                    <div className="border border-red-400 h-2/3 relative flex justify-center items-center">
-                        <Image width={1000} height={1000} src="/Image.png" alt="Conference" className="h-full object-cover relative top-6 left-6" />
+                    <div className="border border-purple-900 h-2/3 relative flex justify-center items-center">
+                        <Image width={1000} height={1000} src="/main.png" alt="Conference" className="h-full object-cover relative top-6 left-6" />
                     </div>
                 </div>
             </section>
@@ -204,17 +205,17 @@ export default function Home() {
 
             {/* About Section */}
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className='flex justify-center'>
-                    <Image src='/Image.png' width={500} height={500} className='md:h-4/6 object-cover' />
+            <div className="md:flex  gap-5">
+                <div className='flex justify-center md:w-1/2'>
+                    <Image src='/cover.png' width={800} height={800} className='w-full h-auto object-cover' />
                 </div>
-                <div className='mt-5'>
+                <div className='mt-5 md:w-1/2'>
                     <h3 className="text-3xl font-bold mb-6">About The Event</h3>
                     <p className="text-gray-300 text-justify">{eventData.description}</p>
                 </div>
             </div>
 
-            <div className=" mt-20 md:-mt-20">
+            <div className="pt-10 md:pt-20">
                 <div>
                     <h4 className="text-2xl font-bold mb-4">Why Participate?</h4>
                     <ul className="space-y-4">
@@ -233,9 +234,9 @@ export default function Home() {
                 <h4 className="text-2xl font-bold mb-4 text-center">Event Highlights</h4>
                 <ul className="flex justify-center flex-wrap gap-4">
                     {eventData.highlights.map((item, index) => (
-                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-[#2D3640] p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
+                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-purple-950 p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
 
-                            <span className="text-gray-300">{item}</span>
+                            <span className="text-white">{item}</span>
                         </li>
                     ))}
                 </ul>
@@ -249,7 +250,7 @@ export default function Home() {
                         <p className="text-gray-300 mb-8">Don't miss this opportunity to be part of the NextGen Entrepreneur Awards 2024</p>
                         <button
                             onClick={() => setShowRegistration(true)}
-                            className="px-8 py-3 bg-red-500 rounded-md font-semibold"
+                            className="px-8 py-3 bg-purple-800 rounded-md font-semibold"
                         >
                             Register Now
                         </button>

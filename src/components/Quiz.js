@@ -153,7 +153,7 @@ export default function QuizForm({ category, userData, onComplete }) {
             </>
           ) : (
             <>
-              <FaTimesCircle className="text-red-500 text-5xl mx-auto mb-4" />
+              <FaTimesCircle className="text-purple-600 text-5xl mx-auto mb-4" />
               <p>Thank you for participating. Keep learning and try again next time!</p>
             </>
           )}
@@ -180,7 +180,7 @@ export default function QuizForm({ category, userData, onComplete }) {
             <button
               key={index}
               className={`w-full p-3 text-left rounded-lg transition-colors ${selectedAnswer === option
-                  ? 'bg-red-500 text-white'
+                  ? 'bg-purple-600 text-white'
                   : 'bg-gray-700 text-white hover:bg-gray-600'
                 }`}
               onClick={() => handleAnswer(option)}
@@ -191,7 +191,7 @@ export default function QuizForm({ category, userData, onComplete }) {
           {selectedAnswer && (
             <button
               onClick={handleNextQuestion}
-              className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors"
+              className="w-full btn-bg text-white py-3 rounded-lg hover:bg-purple-800 transition-colors"
             >
               {currentQuestion === questions.length - 1 ? 'Submit' : 'Next Question'}
             </button>

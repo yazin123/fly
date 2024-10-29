@@ -19,7 +19,7 @@ export function SuccessMessage({ userData }) {
               </div>
               <button 
                   onClick={() => window.location.reload()}
-                  className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
+                  className="w-full bg-purple-800 text-white py-2 rounded-lg hover:bg-purple-500 transition-colors"
               >
                   Back to Home
               </button>
