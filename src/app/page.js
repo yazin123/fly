@@ -244,7 +244,7 @@ export default function Home() {
 
             {/* Call to Action */}
             {eventStatus === 'upcoming' && (
-                <section className="py-16">
+                <section className="py-16 my-16">
                     <div className="text-center">
                         <h3 className="text-3xl font-bold mb-4">Ready to Join Us?</h3>
                         <p className="text-gray-300 mb-8">Don't miss this opportunity to be part of the NextGen Entrepreneur Awards 2024</p>

@@ -1,10 +1,12 @@
 'use client'
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaPlay, FaTwitter, FaFacebook, FaClock, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 const Footer = () => {
     const [email, setEmail] = useState('');
     return (
-        <div className='bg-[#191E24]'>
+        <div className='bg-purple-800'>
 
             {/* Newsletter Section */}
             {/* <section className=" py-16 text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -23,10 +25,10 @@ const Footer = () => {
                     <button className="px-6 py-2 bg-red-500 rounded-md">Subscribe</button>
                 </div>
             </section> */}
-            <footer className=" py-8 border-t border-gray-800 ">
+            <footer className=" py-16 border-t border-gray-800 ">
                 <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div>
-                        <p className="text-sm text-gray-400">Fly Config © 2024</p>
+                    <Link href='/'><Image src='/logo2.png' width={500} height={500} className=' h-32 w-auto' /></Link>
                     </div>
                     <div className="flex gap-4">
                         <FaTwitter className="text-gray-400" />
