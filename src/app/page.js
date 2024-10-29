@@ -167,7 +167,7 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="min-h-screen py-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className='md:pt-3'>
+                <div className='md:pt-3' data-aos="fade-right">
                     <h2 className="text-4xl font-bold mb-4  mt-20">{eventData.title}</h2>
                     <p className="text-xl mb-4 text-gray-300">{eventData.subtitle}</p>
                     <div className="flex items-center gap-2 mb-2">
@@ -187,8 +187,8 @@ export default function Home() {
                 </div>
 
                 <div className="justify-center items-center hidden md:flex">
-                    <div className="border border-purple-900 h-2/3 relative flex justify-center items-center">
-                        <Image width={1000} height={1000} src="/main.png" alt="Conference" className="h-full object-cover relative top-6 left-6" />
+                    <div className="border border-purple-900 h-2/3 relative flex justify-center items-center" data-aos="fade-down">
+                        <Image width={1000} height={1000} src="/main.png" alt="Conference" className="h-full object-cover relative top-6 left-6"  />
                     </div>
                 </div>
             </section>
@@ -234,7 +234,7 @@ export default function Home() {
                 <h4 className="text-2xl font-bold mb-4 text-center">Event Highlights</h4>
                 <ul className="flex justify-center flex-wrap gap-4">
                     {eventData.highlights.map((item, index) => (
-                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-purple-950 p-5 pt-10 pb-10 rounded-md hover:scale-105 transition">
+                        <li key={index} className=" gap-3 md:w-2/3 text-center bg-purple-950 p-5 pt-10 pb-10 rounded-md hover:scale-105 transition" data-aos="fade-right">
 
                             <span className="text-white">{item}</span>
                         </li>

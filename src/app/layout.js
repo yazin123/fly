@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Montserrat } from 'next/font/google';
 import Footer from "@/components/Footer";
+import ClientComponent from "./ClientComponent";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -19,6 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <ClientComponent />
       <body className={`${montserrat.variable} montserrat-font  `}>
         <Navbar />
         {children}
