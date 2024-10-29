@@ -27,7 +27,7 @@ const Footer = () => {
     },
     {
       icon: FaPhone,
-      content: ['+91 8848085572', '+91 8129839102'],
+      content: ['+91 884 808 5572', '+91 812 983 9102'],
       type: 'phone'
     },
     {
@@ -38,7 +38,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-purple-900 to-purple-800">
+    <footer className="bg-[#1A0C2A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           {/* Company Info Section */}

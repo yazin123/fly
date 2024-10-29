@@ -191,7 +191,7 @@ export default function QuizForm({ category, userData, onComplete }) {
           {selectedAnswer && (
             <button
               onClick={handleNextQuestion}
-              className="w-full btn-bg text-white py-3 rounded-lg hover:bg-purple-800 transition-colors"
+              className="w-full bg-green-800 text-white py-3 rounded-lg hover:bg-green-700 transition-colors"
             >
               {currentQuestion === questions.length - 1 ? 'Submit' : 'Next Question'}
             </button>
