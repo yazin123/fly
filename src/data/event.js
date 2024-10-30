@@ -11,7 +11,7 @@
 
         description:`The FLY NextGen Awards 2024 is a premier platform dedicated to \
         recognizing, inspiring and empowering young entrepreneurs to become the business leaders of tomorrow. 
-        Hosted by Forward Looking Youth (FLY) International, this event celebrates the vibrant entrepreneurial spirit of youth, providing a unique
+        Hosted by Forward Learning Youth (FLY) International, this event celebrates the vibrant entrepreneurial spirit of youth, providing a unique
         oppurtunity for emerging talents to showcase their skills adn 
         gain invaluable mentorship from industrial experts.
         With a commitment to equipping young minds with the essential knowledge, tools adn networks needed for success, FLY gathers over
