@@ -76,7 +76,7 @@ const EventsPage = () => {
         {events.map((event, index) => (
           <div
             key={event.id}
-            className=" w-auto" data-aos="fade-right"
+            className=" w-auto" 
 
           >
             <div className="backdrop-blur-3xl bg-white/5 md:pt-10 md:pl-10 border border-white/20 flex">

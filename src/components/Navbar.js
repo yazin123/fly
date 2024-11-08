@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar = ({ className }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,15 +39,17 @@ const Navbar = ({ className }) => {
         <header
             className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-[#1A0C2A]' : 'bg-transparent'
                 } ${className}`}
-          
+
         >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-6">
                 <div className="flex justify-between items-center w-full md:w-auto">
-                    <img
+                    <Link href='/'  onClick={() => setIsMenuOpen(false)}><Image
                         src="/logo1.png"
+                        width={500}
+                        height={500}
                         alt="Header Logo"
                         className="h-10 w-40 object-contain"
-                    />
+                    /></Link>
                     <button
                         className="md:hidden rounded-lg p-2 hover:bg-white/10 text-white"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -59,16 +62,16 @@ const Navbar = ({ className }) => {
                     <ul className="flex flex-col md:flex-row md:justify-end items-center md:gap-16 md:mr-16 gap-4 w-full ">
                         {navLinks.map((link, index) => (
                             <li key={index}>
-                                <a
+                                <Link
                                     href={link.href}
-                                    className="text-sm font-semibold text-white hover:text-gray-200 block text-center mt-10 md:mt-0"
+                                    className="text-sm font-semibold text-white hover:text-gray-200 block text-center mt-10 md:mt-0" onClick={() => setIsMenuOpen(false)}
                                 >
                                     {link.text}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
-                    <Link href='/register' className="px-4 py-2 mt-10 md:mt-0 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 flex justify-center md:w-1/3">
+                    <Link href='/register' className="px-4 py-2 mt-10 md:mt-0 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 flex justify-center md:w-1/3" onClick={() => setIsMenuOpen(false)}>
                         Register
                     </Link>
                 </nav>

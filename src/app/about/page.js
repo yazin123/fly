@@ -150,11 +150,11 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-            <div className=" text-white min-h-[200px] p-8 md:p-12 mt-2 mb-32">
+            <div className=" text-white min-h-[200px] p-8 md:p-12 mt-2 md:mb-32">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
                     <div className="flex-shrink-0">
                         <div className="md:bg-purple-800 p-4 rounded-full">
-                            <FaEyeDropper className="w-12 h-12 md:w-16 md:h-16" />
+                            <FaEyeDropper className="w-32 h-32 md:w-16 md:h-16" />
                         </div>
                     </div>
 
@@ -168,10 +168,10 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-            <div className=" mx-auto text-center relative z-10 py-16 text-white ">
+            <div className=" mx-auto text-center relative z-10 md:mt-16 mt-10 md:mb-16 p-2 text-white ">
                 <div className="">
                     {/* Header Section */}
-                    <div className="text-center mb-16 max-w-7xl  mx-auto  relative z-10 py-16 text-white">
+                    <div className="text-center mb-16 max-w-7xl  mx-auto  relative z-10  text-white">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">Values of FLY</h1>
                         <p className="text-gray-300 mx-auto text-sm md:text-base" data-aos="fade-up">
                             FLY’s mission is to cultivate a community of empowered, connected, and inspired young entrepreneurs who support each other on their journeys to success.

@@ -40,7 +40,7 @@ const TeamBoard = () => {
               <h3 className="text-xl md:text-2xl text-white font-semibold mb-1">{executive.name}</h3>
               <p className="text-purple-200 italic ">{executive.role}</p>
               <p className="text-purple-200 italic mb-2">{executive.subbrole}</p>
-              <p className="text-gray-300 leading-relaxed">{executive.description}</p>
+              <p className="text-gray-300 leading-relaxed md:text-center text-justify">{executive.description}</p>
             </div>
           </div>
         ))}

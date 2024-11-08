@@ -59,7 +59,7 @@ const WhyJoinSection = () => {
             >
               <feature.icon className="w-8 h-8 mb-4 text-purple-400" />
               <h3 className="text-xl font-semibold mb-3 text-left">{feature.title}</h3>
-              <p className="text-gray-300 text-sm text-left">{feature.description}</p>
+              <p className="text-gray-300 text-sm md:text-left text-justify">{feature.description}</p>
             </div>
           ))}
         </div>
