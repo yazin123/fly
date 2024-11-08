@@ -14,7 +14,7 @@ export function SuccessMessage({ userData }) {
                           <p className="text-sm mt-2">We'll contact you at {userData?.email} with further details.</p>
                       </>
                   ) : (
-                      <p className="text-gray-300 mt-4">Thank you for your participation. Keep learning and try again next time!</p>
+                      <p className="text-gray-300 mt-4">Thank you for your participation. Keep Looking and try again next time!</p>
                   )}
               </div>
               <button 

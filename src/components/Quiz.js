@@ -154,7 +154,7 @@ export default function QuizForm({ category, userData, onComplete }) {
           ) : (
             <>
               <FaTimesCircle className="text-purple-600 text-5xl mx-auto mb-4" />
-              <p>Thank you for participating. Keep learning and try again next time!</p>
+              <p>Thank you for participating. Keep Looking and try again next time!</p>
             </>
           )}
         </div>

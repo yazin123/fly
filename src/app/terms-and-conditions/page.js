@@ -12,7 +12,7 @@ const page = () => {
                 <div className="bg-purple-950 p-6 text-white">
                     <div className="flex items-center gap-3">
                         <IoDocumentTextOutline className="text-3xl" />
-                        <h1 className="text-2xl font-bold">Terms and Conditions for Forward Learning Youth (FLY)</h1>
+                        <h1 className="text-2xl font-bold">Terms and Conditions for Forward Looking Youth (FLY)</h1>
                     </div>
                     <p className="mt-2 text-blue-100">Effective Date: 29/10/2024</p>
                 </div>
@@ -69,7 +69,7 @@ const page = () => {
                                 <div className="flex items-start gap-3">
                                     <MdLocationOn className="text-blue-600 text-xl mt-1 flex-shrink-0" />
                                     <div>
-                                        <p className="font-medium text-white">Forward Learning Youth (FLY)</p>
+                                        <p className="font-medium text-white">Forward Looking Youth (FLY)</p>
                                         <p className="text-gray-300">XXI/152, Cochin University Post,</p>
                                         <p className="text-gray-300">Kalamassery, Kochi - 682022, India</p>
                                     </div>

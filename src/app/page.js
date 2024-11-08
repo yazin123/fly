@@ -29,7 +29,7 @@ export default function Home() {
         startTime: '09:00',
         endTime: '17:00',
         venue: 'Gokulam Convention Center, Kochi',
-        description: `The FLY NextGen Awards 2024 is a premier platform dedicated to recognizing, inspiring and empowering young entrepreneurs to become the business leaders of tomorrow. Hosted by Forward Learning Youth (FLY) International, this event celebrates the vibrant entrepreneurial spirit of youth, providing a unique oppurtunity for emerging talents to showcase their skills and gain invaluable mentorship from industrial experts. With a commitment to equipping young minds with the essential knowledge, tools and networks needed for success, FLY gathers over 200+ young entrepreneurs from diverse industries for a dynamic day filled with competitions, training sessions, expert talks and a prestigious award ceremony`,
+        description: `The FLY NextGen Awards 2024 is a premier platform dedicated to recognizing, inspiring and empowering young entrepreneurs to become the business leaders of tomorrow. Hosted by Forward Looking Youth (FLY) International, this event celebrates the vibrant entrepreneurial spirit of youth, providing a unique oppurtunity for emerging talents to showcase their skills and gain invaluable mentorship from industrial experts. With a commitment to equipping young minds with the essential knowledge, tools and networks needed for success, FLY gathers over 200+ young entrepreneurs from diverse industries for a dynamic day filled with competitions, training sessions, expert talks and a prestigious award ceremony`,
         whyParticipate: [
             'Tackle engaging activities across various categories including Strategy, Financial Management, Marketing, Leadership, Technology, and Human Resource Management',
             'Benefit from case studies and interactive sessions led by industry experts, equipping you with the knowledge to navigate complex business scenarios effectively.',
@@ -188,7 +188,7 @@ export default function Home() {
 
                 <div className="justify-center items-center hidden md:flex">
                     <div className="border border-purple-900 h-2/3 relative flex justify-center items-center" data-aos="fade-down">
-                        <Image width={1000} height={1000} src="/main.png" alt="Conference" className="h-full object-cover relative top-6 left-6"  />
+                        <Image width={1000} height={1000} src="/mockup1.jpg" alt="Conference" className="h-full object-cover relative top-6 left-6"  />
                     </div>
                 </div>
             </section>
@@ -207,7 +207,7 @@ export default function Home() {
 
             <div className="md:flex  gap-5">
                 <div className='flex justify-center md:w-1/2'>
-                    <Image src='/cover.png' width={800} height={800} className='w-full h-auto object-cover' />
+                    <Image src='/mockup2.jpg' width={800} height={800} className='w-full h-auto object-cover' />
                 </div>
                 <div className='mt-5 md:w-1/2'>
                     <h3 className="text-3xl font-bold mb-6">About The Event</h3>

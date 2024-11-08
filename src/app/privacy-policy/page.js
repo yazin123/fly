@@ -10,7 +10,7 @@ const Page = () => {
         <div className="bg-purple-950 p-6 text-white">
           <div className="flex items-center gap-3">
             <IoShieldCheckmarkOutline className="text-3xl" />
-            <h1 className="text-2xl font-bold">Privacy Policy for Forward Learning Youth (FLY)</h1>
+            <h1 className="text-2xl font-bold">Privacy Policy for Forward Looking Youth (FLY)</h1>
           </div>
           <p className="mt-2 text-indigo-100">Effective Date: 29/10/2024</p>
         </div>
@@ -19,7 +19,7 @@ const Page = () => {
           <div className="space-y-6">
             <section>
               <h2 className="text-xl font-semibold text-white mb-3">1. Introduction</h2>
-              <p className="text-gray-300">Forward Learning Youth (FLY) is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you participate in the FLY NextGen Awards 2024 and other FLY initiatives.</p>
+              <p className="text-gray-300">Forward Looking Youth (FLY) is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you participate in the FLY NextGen Awards 2024 and other FLY initiatives.</p>
             </section>
 
             <section>
@@ -89,7 +89,7 @@ const Page = () => {
                 <div className="flex items-start gap-3">
                   <MdLocationOn className="text-purple-500 text-xl mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-white">Forward Learning Youth (FLY)</p>
+                    <p className="font-medium text-white">Forward Looking Youth (FLY)</p>
                     <p className="text-gray-300">XXI/152, Cochin University Post,</p>
                     <p className="text-gray-300">Kalamassery, Kochi - 682022, India</p>
                   </div>
