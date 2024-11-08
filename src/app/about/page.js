@@ -175,7 +175,7 @@ const AboutUs = () => {
             <div className=" mx-auto text-center relative z-10 py-16 text-white ">
                 <div className="">
                     {/* Header Section */}
-                    <div className="text-center mb-16 max-w-7xl  mx-auto text-center relative z-10 py-16 text-white">
+                    <div className="text-center mb-16 max-w-7xl  mx-auto  relative z-10 py-16 text-white">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">Values of FLY</h1>
                         <p className="text-gray-300 mx-auto text-sm md:text-base" data-aos="fade-up">
                             FLY’s mission is to cultivate a community of empowered, connected, and inspired young entrepreneurs who support each other on their journeys to success.
