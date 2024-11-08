@@ -39,7 +39,7 @@ const TestimonialSection = () => {
   const [activeId, setActiveId] = useState(1);
 
   return (
-    <div className="min-h-screen  p-4 md:p-8">
+    <div className="min-h-screen  p-4 md:p-8 overflow-hidden">
       <div className="max-w-6xl mx-auto pt-16">
         <h1 className="text-4xl md:text-5xl text-white font-bold text-center mb-24">
           Inspiring Success Stories

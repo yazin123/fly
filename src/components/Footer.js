@@ -50,7 +50,7 @@ const Footer = () => {
                 width={1000} 
                 height={100} 
                 alt="Fly Network Logo"
-                className="w-auto h-32 object-cover transform hover:scale-105 transition-transform duration-300"
+                className="w-auto md:h-32 object-cover transform hover:scale-105 transition-transform duration-300"
               />
             </Link>
             
