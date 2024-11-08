@@ -1,22 +1,20 @@
 'use client'
-import AnimatedBackground from '@/components/AnimatedBackground';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BsCalendar2Event } from 'react-icons/bs';
 
 const EventsPage = () => {
-  // Sample events data - this would come from your backend
-  const eventsData = [
-    {
-      id: 1,
-      title: 'FLY Inaugurational Conference 2024',
-      date: '2024-12-21T09:00:00',
-      image: '/Image.png'
-    },
-   
-  ];
-
   const [events, setEvents] = useState([]);
+  
+  // Sample event data
+  const eventsData = [{
+    id: '1',
+    title: 'NextGen Entrepreneur Awards 2024',
+    date: '2024-12-21T09:00:00',
+    description: 'The FLY NextGen Awards 2024 is a premier platform dedicated to recognizing, inspiring and empowering young entrepreneurs to become the business leaders of tomorrow.',
+    image: '/mockup1.jpg'
+  }];
 
   useEffect(() => {
     // Initialize events with countdown data
@@ -69,25 +67,20 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 pt-52">
-      <AnimatedBackground />
-
+    <div className="min-h-screen p-3 mt-32 z-10">
       <h2 className="text-white text-4xl font-bold text-center mb-12">
         Explore and Join Upcoming Events
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-center">
         {events.map((event, index) => (
           <div
             key={event.id}
-            className="w-1/2"
-            style={{
-              opacity: 0,
-              animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`
-            }}
+            className="md:w-1/2 w-auto" data-aos="fade-right"
+        
           >
-            <div className="backdrop-blur-3xl bg-white/5 md:pt-10 md:pl-10  border border-white/20 flex">
-              <div className="md:w-2/3  p-3 pb-5 md:pb-10">
+            <div className="backdrop-blur-3xl bg-white/5 md:pt-10 md:pl-10 border border-white/20 flex">
+              <div className="md:w-2/3 p-3 pb-5 md:pb-10">
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <p className="text-white/70 text-sm mb-2 flex items-center gap-2">
@@ -127,17 +120,22 @@ const EventsPage = () => {
                   </div>
                 </div>
 
-                <Link
-                  className="p-2 btn-bg text-white rounded-sm  min-w-full
-                           hover:bg-red-400 transition-colors duration-300"
-                  href={`/${event.id}`}
-                >
-                  Know more
-                </Link>
+                <div className="flex gap-3">
+                  <Link
+                    href={`/register`}
+                    className="p-2 bg-purple-100 text-purple-800 rounded-sm flex-1 text-center
+                             hover:bg-purple-300 transition-colors duration-300"
+                  >
+                    Register Now
+                  </Link>
+                 
+                </div>
               </div>
 
-              <img
+              <Image
                 src={event.image}
+                width={300}
+                height={500}
                 alt={event.title}
                 className="md:w-1/3 h-auto object-cover hidden md:block"
               />
@@ -146,12 +144,7 @@ const EventsPage = () => {
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+     
     </div>
   );
 };
