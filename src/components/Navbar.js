@@ -68,7 +68,7 @@ const Navbar = ({ className }) => {
                             </li>
                         ))}
                     </ul>
-                    <Link href='/register' className="px-4 py-2 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 flex justify-center md:w-1/3">
+                    <Link href='/register' className="px-4 py-2 mt-10 md:mt-0 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 flex justify-center md:w-1/3">
                         Register
                     </Link>
                 </nav>
