@@ -112,11 +112,7 @@ const AboutUs = () => {
                     <div className="flex flex-col md:flex-row items-center gap-8">
                         {/* Left side - Banner image */}
                         <div className="w-full md:w-1/2">
-
-
                             <Image src={'/mockup2.jpg'} height={500} width={800} className='w-full h-full cover rounded-sm' />
-
-
                         </div>
 
                         {/* Right side - Content */}
