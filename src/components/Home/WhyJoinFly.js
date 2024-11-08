@@ -40,22 +40,26 @@ const WhyJoinSection = () => {
       <div className="">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6"  data-aos="fade-up">Why Join FLY</h1>
-          <p className="text-gray-300 mx-auto text-sm md:text-base text-justify"  data-aos="fade-up">
-            Joining FLY (Forward Looking Youth) International is your gateway to a vibrant community of future business 
-            leaders and next-generation entrepreneurs. As a member of FLY, you're stepping into an environment designed 
-            to empower young talents, sharpen entrepreneurial skills, and foster lifelong connections with like-minded 
-            peers and industry leaders. Here's why FLY is the ideal platform for young entrepreneurs ready to make a 
+          <h1 className="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">Why Join FLY</h1>
+          <p className="text-gray-300 mx-auto text-sm md:text-base text-justify" data-aos="fade-up">
+            Joining FLY (Forward Looking Youth) International is your gateway to a vibrant community of future business
+            leaders and next-generation entrepreneurs. As a member of FLY, you're stepping into an environment designed
+            to empower young talents, sharpen entrepreneurial skills, and foster lifelong connections with like-minded
+            peers and industry leaders. Here's why FLY is the ideal platform for young entrepreneurs ready to make a
             meaningful impact.
+          </p>
+          <p className='text-gray-300 mx-auto text-sm md:text-base text-justify' data-aos="fade-up">
+            FLY connects ambitious individuals from entrepreneurial backgrounds, offering them access to valuable resources and personalized mentorship. Through FLY, members can engage in networking opportunities, share innovative ideas, and develop key business skills. The platform also hosts workshops and provides educational tools to help entrepreneurs navigate the challenges of building successful ventures
+
           </p>
         </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
-              className="p-6 rounded-lg hover:bg-purple-700/50 transition-all duration-300 flex flex-col items-start"  data-aos="fade-in" data-aos-delay={`${index}00`}
+              className="p-6 rounded-lg hover:bg-purple-700/50 transition-all duration-300 flex flex-col items-start" data-aos="fade-in" data-aos-delay={`${index}00`}
             >
               <feature.icon className="w-8 h-8 mb-4 text-purple-400" />
               <h3 className="text-xl font-semibold mb-3 text-left">{feature.title}</h3>
@@ -68,16 +72,16 @@ const WhyJoinSection = () => {
         <div className="text-center mt-12">
           <button className="bg-purple-100 text-purple-900 px-6 py-3 rounded-lg font-semibold hover:bg-mint-200 transition-colors duration-300 inline-flex items-center group">
             Become a member now
-            <svg 
-              className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
-              fill="none" 
-              viewBox="0 0 24 24" 
+            <svg
+              className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M9 5l7 7-7 7"
               />
             </svg>

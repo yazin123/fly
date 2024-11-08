@@ -214,7 +214,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-            <EventsPage/>
+            {/* <EventsPage/> */}
         </>
     );
 };
