@@ -180,11 +180,11 @@ const AboutUs = () => {
                     </div>
 
                     {/* Features Grid */}
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="flex  flex-wrap justify-center gap-8">
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className="p-6 w-3/12 rounded-lg hover:bg-purple-700/50 transition-all duration-300 flex flex-col items-start" data-aos="fade-in" data-aos-delay={`${index}00`}
+                                className="p-6 md:w-3/12 rounded-lg hover:bg-purple-700/50 transition-all duration-300 flex flex-col items-start" data-aos="fade-in" data-aos-delay={`${index}00`}
                             >
                                 <feature.icon className="w-8 h-8 mb-4 text-purple-400" />
                                 <h3 className="text-xl font-semibold mb-3 text-left">{feature.title}</h3>

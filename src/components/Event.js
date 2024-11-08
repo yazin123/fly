@@ -6,7 +6,7 @@ import { BsCalendar2Event } from 'react-icons/bs';
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
-  
+
   // Sample event data
   const eventsData = [{
     id: '1',
@@ -67,7 +67,7 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-3 mt-32 z-10">
+    <div className=" p-3 mt-32 z-10">
       <h2 className="text-white text-4xl font-bold text-center mb-12">
         Explore and Join Upcoming Events
       </h2>
@@ -76,11 +76,11 @@ const EventsPage = () => {
         {events.map((event, index) => (
           <div
             key={event.id}
-            className="md:w-1/2 w-auto" data-aos="fade-right"
-        
+            className=" w-auto" data-aos="fade-right"
+
           >
             <div className="backdrop-blur-3xl bg-white/5 md:pt-10 md:pl-10 border border-white/20 flex">
-              <div className="md:w-2/3 p-3 pb-5 md:pb-10">
+              <div className="md:w-2/3 p-3 pb-5 md:pb-10 ">
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <p className="text-white/70 text-sm mb-2 flex items-center gap-2">
@@ -128,23 +128,24 @@ const EventsPage = () => {
                   >
                     Register Now
                   </Link>
-                 
+
                 </div>
               </div>
 
-              <Image
-                src={event.image}
-                width={300}
-                height={500}
-                alt={event.title}
-                className="md:w-1/3 h-auto object-cover hidden md:block"
-              />
+              <div className='border border-purple-600 hidden md:block relative bottom-5 right-2 '>
+                <Image
+                  src={event.image}
+                  width={300}
+                  height={500}
+                  alt={event.title}
+                  className=" h-full object-cover  relative top-5 left-2"
+                />
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-     
     </div>
   );
 };

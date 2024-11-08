@@ -37,21 +37,55 @@ const testimonials = [
 
 const TestimonialSection = () => {
   const [activeId, setActiveId] = useState(1);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swiped left
+      setActiveId((prevActiveId) => {
+        const nextId = prevActiveId + 1;
+        return nextId > testimonials.length ? 1 : nextId;
+      });
+    }
+    if (touchStart - touchEnd < -50) {
+      // Swiped right
+      setActiveId((prevActiveId) => {
+        const nextId = prevActiveId - 1;
+        return nextId < 1 ? testimonials.length : nextId;
+      });
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   return (
-    <div className="min-h-screen  p-4 md:p-8 overflow-hidden">
-      <div className="max-w-6xl mx-auto pt-16">
+    <div
+      className="min-h-screen mt-32 p-4 md:p-8 overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="max-w-6xl mx-auto ">
         <h1 className="text-4xl md:text-5xl text-white font-bold text-center mb-24">
           Inspiring Success Stories
         </h1>
-        
+
         <div className="relative h-[32rem]">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
               onClick={() => setActiveId(testimonial.id)}
               className={`
-                absolute left-1/2 w-full max-w-xl
+                absolute left-1/2 w-full max-w-xl text-left
                 transform transition-all duration-500 ease-in-out cursor-pointer
                 ${getPositionClasses(testimonial.id, activeId, testimonials.length)}
               `}
@@ -70,7 +104,7 @@ const TestimonialSection = () => {
                 </div>
                 <p className="text-gray-700 text-lg mb-6">"{testimonial.text}"</p>
                 <div className="flex items-center gap-2">
-                  <span className="inline-block w-4 h-0.5 bg-purple-400"/>
+                  <span className="inline-block w-4 h-0.5 bg-purple-400" />
                   <span className="text-purple-600 text-sm">{testimonial.date}</span>
                 </div>
               </div>
@@ -86,9 +120,9 @@ const getPositionClasses = (id, activeId, total) => {
   if (id === activeId) {
     return "-translate-x-1/2 scale-100 opacity-100 z-30";
   }
-  
+
   const offset = id - activeId;
-  
+
   if (offset === 1) {
     return "-translate-x-1/4 translate-y-8 scale-95 opacity-75 z-20";
   }
@@ -101,7 +135,7 @@ const getPositionClasses = (id, activeId, total) => {
   if (offset < -1) {
     return "-translate-x-3/4 translate-y-16 scale-90 opacity-50 z-10";
   }
-  
+
   return "-translate-x-1/2 translate-y-24 opacity-0 scale-85 z-0";
 };
 
