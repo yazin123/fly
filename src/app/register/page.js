@@ -5,6 +5,7 @@ import QuizForm from '@/components/register/Quiz';
 import RegistrationForm from '@/components/register/RegisterationForm';
 import SuccessMessage from '@/components/register/SuccessMessage';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { FaCalendar, FaCalendarAlt, FaClock, FaMapMarkedAlt } from 'react-icons/fa';
 
@@ -149,11 +150,11 @@ export default function Home() {
                         </div>
                         <button
                             onClick={() => setShowRegistration(true)}
-                            className="w-full py-3 bg-purple-800 hover:bg-purple-500 rounded-md font-semibold"
+                            className="w-full py-3 bg-purple-100 text-purple-900 rounded-md font-semibold"
                         >
                             Register Now
                         </button>
-                        <button className="w-full py-3 rounded-md font-semibold mt-3">
+                        <button onClick={()=>{document.getElementById('learnmore').scrollIntoView({behavior:'smooth'})}} className="w-full py-3 rounded-md font-semibold mt-3 bg-purple-600">
                             Learn more
                         </button>
                     </>
@@ -205,12 +206,12 @@ export default function Home() {
 
             {/* About Section */}
 
-            <div className="md:flex  gap-5">
+            <div className="md:flex  gap-5 " id='learnmore'>
                 <div className='flex justify-center md:w-1/2'>
                     <Image src='/mockup2.jpg' width={800} height={800} className='w-full h-auto object-cover' />
                 </div>
                 <div className='mt-5 md:w-1/2'>
-                    <h3 className="text-3xl font-bold mb-6">About The Event</h3>
+                    <h3 className="text-3xl font-bold mb-6" >About The Event</h3>
                     <p className="text-gray-300 text-justify">{eventData.description}</p>
                 </div>
             </div>

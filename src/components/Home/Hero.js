@@ -32,7 +32,7 @@ const HeroSection = () => {
           <Link href='/register' className="px-8 py-3 bg-purple-100 text-purple-900 rounded-md font-semibold hover:bg-purple-200 transition-colors duration-300">
             Join Us
           </Link>
-          <Link href='/' className="px-8 py-3 border-2 border-purple-100 text-purple-100 rounded-md font-semibold hover:bg-purple-800 transition-colors duration-300">
+          <Link href='/' className="px-8 py-3  bg-purple-600 text-purple-100 rounded-md font-semibold hover:bg-purple-800 transition-colors duration-300">
             Learn More
           </Link>
         </div>
